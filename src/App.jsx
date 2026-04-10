@@ -409,10 +409,10 @@ const App = () => {
       <footer className="bg-white pt-12 pb-12 border-t border-slate-200">
         <div className="max-w-5xl mx-auto px-6 text-[10px] text-slate-400 flex flex-col md:flex-row justify-between items-center gap-6 font-bold uppercase tracking-[0.3em]">
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-2">
-            <p>Airzona Simulation Engine v6.2</p>
-            <p>듀벨(주) 안동 학교급식센터 실증 데이터 적용</p>
+            <p>Airzona Simulation Engine v1.0</p>
+            <p></p>
           </div>
-          <p className="text-slate-900 font-black tracking-widest">© 2024 AIRZONA SOLUTION CO.</p>
+          <p className="text-slate-900 font-black tracking-widest">© 2026 AIRZONA SOLUTION CO.</p>
         </div>
       </footer>
     </div>
