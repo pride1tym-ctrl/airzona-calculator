@@ -319,7 +319,7 @@ const App = () => {
                   </div>
                   
                   <div className="space-y-8">
-                    {/* ROI 입력 영역 */}
+                    {/* ROI 입력 영역 - 라벨 폰트 사이즈 조정 (text-xl -> text-lg) */}
                     <div className="space-y-4 transition-all group">
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full" />
