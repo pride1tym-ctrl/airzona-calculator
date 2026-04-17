@@ -178,7 +178,8 @@ const App = () => {
                     <select 
                       value={selectedItemName}
                       onChange={(e) => setSelectedItemName(e.target.value)}
-                      className="w-full bg-transparent font-black text-2xl text-slate-800 outline-none cursor-pointer appearance-none pr-10"
+                      style={{ color: POINT_COLOR }} // 품목 선택 컬러 수정 (#9f4700 적용)
+                      className="w-full bg-transparent font-black text-2xl outline-none cursor-pointer appearance-none pr-10"
                     >
                       {ITEM_DATA.map(item => <option key={item.name} value={item.name}>{item.name}</option>)}
                     </select>
@@ -270,7 +271,7 @@ const App = () => {
                   </div>
                   <div className="flex justify-between items-center text-sm font-bold text-slate-500">
                     <span>손실 추정액</span>
-                    <span className="text-red-500 font-black">- ₩ {formatNum(calcResults.baseWasteCost)}</span>
+                    <span className="text-red-400 font-black">- ₩ {formatNum(calcResults.baseWasteCost)}</span>
                   </div>
                   <div className="pt-6 border-t-2 border-slate-900">
                     <span className="block text-sm font-black text-slate-500 uppercase mb-2 tracking-widest">실수령 금액 (저장금액-감모금액)</span>
@@ -374,11 +375,12 @@ const App = () => {
                             style={{ color: POINT_COLOR }}
                             className="w-full bg-transparent text-2xl font-black outline-none tabular-nums" 
                          />
-                         <span className="text-xl font-bold text-slate-300 whitespace-nowrap group-focus-within:text-blue-600 transition-colors">회 / 년</span>
+                         <span className="text-xl font-bold text-slate-300 italic whitespace-nowrap group-focus-within:text-blue-600 transition-colors">회 / 년</span>
                       </div>
                       
                       <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 shadow-inner mt-4">
-                        <div className="text-sm font-bold leading-relaxed flex items-start gap-2" style={{ color: POINT_COLOR }}>
+                        {/* 가이드 문구 텍스트 크기 수정 (text-xs 적용) */}
+                        <div className="text-xs font-bold leading-relaxed flex items-start gap-2" style={{ color: POINT_COLOR }}>
                           <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
                           <div>
                             <p>에어조나 기기 및 설치비용과 연간 예상 저장횟수를 직접 입력해보세요.</p>

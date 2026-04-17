@@ -127,6 +127,7 @@ const App = () => {
               <div className="h-6 w-1 bg-blue-600 rounded-full" />
               <span className="text-blue-600 font-black text-xs tracking-widest uppercase">AIRZONA ECONOMIC ANALYSIS</span>
             </div>
+            {/* 요청에 따라 타이틀 앞의 아이콘 삭제하여 정갈하게 수정 */}
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
               에어조나(AIRZONA) 수익 계산기
             </h1>
@@ -178,7 +179,8 @@ const App = () => {
                     <select 
                       value={selectedItemName}
                       onChange={(e) => setSelectedItemName(e.target.value)}
-                      className="w-full bg-transparent font-black text-2xl text-slate-800 outline-none cursor-pointer appearance-none pr-10"
+                      style={{ color: POINT_COLOR }}
+                      className="w-full bg-transparent font-black text-2xl outline-none cursor-pointer appearance-none pr-10"
                     >
                       {ITEM_DATA.map(item => <option key={item.name} value={item.name}>{item.name}</option>)}
                     </select>
@@ -270,7 +272,7 @@ const App = () => {
                   </div>
                   <div className="flex justify-between items-center text-sm font-bold text-slate-500">
                     <span>손실 추정액</span>
-                    <span className="text-red-500 font-black">- ₩ {formatNum(calcResults.baseWasteCost)}</span>
+                    <span className="text-red-400 font-black">- ₩ {formatNum(calcResults.baseWasteCost)}</span>
                   </div>
                   <div className="pt-6 border-t-2 border-slate-900">
                     <span className="block text-sm font-black text-slate-500 uppercase mb-2 tracking-widest">실수령 금액 (저장금액-감모금액)</span>
@@ -352,7 +354,7 @@ const App = () => {
                             value={installCost} 
                             onChange={handleInstallCostChange}
                             placeholder="0"
-                            className="w-full bg-transparent text-2xl font-black outline-none tabular-nums text-slate-800" 
+                            className="w-full bg-transparent text-3xl font-black outline-none tabular-nums text-slate-800" 
                          />
                       </div>
                       <p className="text-[11px] text-slate-400 font-bold ml-4 -mt-2 mb-1">
@@ -372,9 +374,9 @@ const App = () => {
                             value={annualCycles} 
                             onChange={handleInputChange(setAnnualCycles)}
                             style={{ color: POINT_COLOR }}
-                            className="w-full bg-transparent text-2xl font-black outline-none tabular-nums" 
+                            className="w-full bg-transparent text-3xl font-black outline-none tabular-nums" 
                          />
-                         <span className="text-xl font-bold text-slate-300 whitespace-nowrap group-focus-within:text-blue-600 transition-colors">회 / 년</span>
+                         <span className="text-xl font-bold text-slate-300 italic whitespace-nowrap group-focus-within:text-blue-600 transition-colors">회 / 년</span>
                       </div>
                       
                       <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 shadow-inner mt-4">
@@ -400,7 +402,7 @@ const App = () => {
                   <div className="bg-slate-50/50 rounded-3xl p-6 border border-slate-100 space-y-2 group transition-all hover:bg-white hover:shadow-md shadow-sm">
                     <p className="text-xs font-black text-slate-400 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">연간 총 기대 절감액</p>
                     <div className="flex items-baseline gap-2">
-                      <p className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 tabular-nums">
+                      <p className="text-4xl font-black italic tracking-tight text-slate-900 tabular-nums">
                         ₩ {formatNum(calcResults.expectedAnnualSaving)}
                       </p>
                     </div>
@@ -412,12 +414,12 @@ const App = () => {
                     </div>
                     <div className="relative z-10 space-y-2">
                       <p className="text-xs font-black text-blue-100 uppercase tracking-[0.2em]">Payback Period</p>
-                      <h4 className="text-lg font-bold text-white mb-2 uppercase tracking-tighter">투자비용 회수기간</h4>
+                      <h4 className="text-xl font-black text-white mb-2 uppercase tracking-tighter">투자비용 회수기간</h4>
                       <div className="flex items-baseline gap-3">
-                        <span className="text-6xl md:text-7xl font-black text-white tracking-tighter leading-none tabular-nums drop-shadow-md">
+                        <span className="text-7xl font-black text-white tracking-tighter leading-none tabular-nums drop-shadow-md">
                           {roiInfo.value}
                         </span>
-                        <span className="text-xl md:text-2xl font-black text-blue-200">{roiInfo.unit} 이내</span>
+                        <span className="text-2xl font-black text-blue-200 italic">{roiInfo.unit} 이내</span>
                       </div>
                     </div>
                   </div>
@@ -438,12 +440,19 @@ const App = () => {
         </div>
       </main>
 
+      {/* 푸터 영역: 카피라이트 옆으로 브랜드 심볼 작게 재배치 */}
       <footer className="bg-white pt-12 pb-12 border-t border-slate-200">
         <div className="max-w-5xl mx-auto px-6 text-[10px] text-slate-400 flex flex-col md:flex-row justify-between items-center gap-6 font-bold uppercase tracking-[0.3em]">
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-2">
             <p>AIRZONA SIMULATION ENGINE V.1.0</p>
           </div>
-          <p className="text-slate-900 font-black tracking-widest">© 2026 AIRZONA | DEWBELL CO.</p>
+          <div className="flex items-center gap-3">
+            {/* 하단 낙관 스타일의 미니 심볼 */}
+            <div className="w-5 h-5 bg-slate-900 rounded flex items-center justify-center">
+              <span className="text-white font-black text-[10px]">A</span>
+            </div>
+            <p className="text-slate-900 font-black tracking-widest">© 2026 AIRZONA | DEWBELL CO.</p>
+          </div>
         </div>
       </footer>
     </div>
