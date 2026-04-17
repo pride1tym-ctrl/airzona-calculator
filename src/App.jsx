@@ -114,6 +114,9 @@ const App = () => {
 
   const roiInfo = renderROIPeriod();
 
+  // 포인트 컬러 상수
+  const POINT_COLOR = "#9f4700";
+
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 tracking-tight leading-relaxed">
       {/* 1. 타이틀 영역 */}
@@ -122,7 +125,7 @@ const App = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="h-6 w-1 bg-blue-600 rounded-full" />
-              <span className="text-blue-600 font-black text-xs tracking-widest uppercase italic">AIRZONA ECONOMIC ANALYSIS</span>
+              <span className="text-blue-600 font-black text-xs tracking-widest uppercase">AIRZONA ECONOMIC ANALYSIS</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
               에어조나(AIRZONA) 수익 계산기
@@ -159,14 +162,17 @@ const App = () => {
               <h2 className="text-2xl font-black flex items-center gap-3 text-slate-900">
                 <Calculator className="w-6 h-6 text-blue-600" /> 저장 조건 설정
               </h2>
-              <p className="text-blue-600 text-[11px] font-black flex items-center gap-1.5 bg-white px-3 py-1 rounded-full border border-blue-100 shadow-sm">
+              <p 
+                style={{ color: POINT_COLOR }}
+                className="text-[11px] font-black flex items-center gap-1.5 bg-white px-3 py-1 rounded-full border border-orange-100 shadow-sm"
+              >
                 <Info className="w-3.5 h-3.5" /> 각 항목의 숫자를 직접 입력하실 수 있습니다. 수정하여 진행하세요.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-5 bg-white border border-slate-900 rounded-2xl shadow-md space-y-3 transition-all focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-50">
-                <label className="text-base font-black text-slate-700 uppercase tracking-tight">품목 선택</label>
+                <label className="text-[13px] font-black text-slate-700 uppercase tracking-tight">품목 선택</label>
                 <div className="relative group">
                   <div className="bg-slate-50 rounded-xl p-2 border border-slate-100">
                     <select 
@@ -184,34 +190,52 @@ const App = () => {
               </div>
 
               <div className="p-5 bg-white border border-slate-900 rounded-2xl shadow-md space-y-3 transition-all focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-50 group">
-                <label className="text-base font-black text-slate-700 uppercase tracking-tight flex items-center gap-2">
+                <label className="text-[13px] font-black text-slate-700 uppercase tracking-tight flex items-center gap-2">
                   저장 기간 (일)
                 </label>
                 <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-1 border border-slate-100 group-focus-within:bg-white transition-all">
-                  <input type="text" inputMode="numeric" value={storageDays} onChange={handleInputChange(setStorageDays)}
-                    className="w-full text-3xl font-black bg-transparent border-none focus:ring-0 outline-none" />
+                  <input 
+                    type="text" 
+                    inputMode="numeric" 
+                    value={storageDays} 
+                    onChange={handleInputChange(setStorageDays)}
+                    style={{ color: POINT_COLOR }}
+                    className="w-full text-3xl font-black bg-transparent border-none focus:ring-0 outline-none" 
+                  />
                   <span className="text-lg font-bold text-slate-400">일</span>
                 </div>
               </div>
 
               <div className="p-5 bg-white border border-slate-900 rounded-2xl shadow-md space-y-3 transition-all focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-50 group">
-                <label className="text-base font-black text-slate-700 uppercase tracking-tight flex items-center gap-2">
+                <label className="text-[13px] font-black text-slate-700 uppercase tracking-tight flex items-center gap-2">
                   저장 물량 (kg)
                 </label>
                 <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-1 border border-slate-100 group-focus-within:bg-white transition-all">
-                  <input type="text" inputMode="numeric" value={storageWeight} onChange={handleInputChange(setStorageWeight)}
-                    className="w-full text-3xl font-black bg-transparent border-none focus:ring-0 outline-none" />
+                  <input 
+                    type="text" 
+                    inputMode="numeric" 
+                    value={storageWeight} 
+                    onChange={handleInputChange(setStorageWeight)}
+                    style={{ color: POINT_COLOR }}
+                    className="w-full text-3xl font-black bg-transparent border-none focus:ring-0 outline-none" 
+                  />
                   <span className="text-lg font-bold text-slate-400">kg</span>
                 </div>
               </div>
 
               <div className="p-5 bg-white border border-slate-900 rounded-2xl shadow-md space-y-3 transition-all focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-50 group">
-                <label className="text-base font-black text-slate-700 uppercase tracking-tight flex items-center gap-2">
+                <label className="text-[13px] font-black text-slate-700 uppercase tracking-tight flex items-center gap-2">
                   도매 기준가 (원)
                 </label>
                 <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-1 border border-slate-100 group-focus-within:bg-white transition-all">
-                  <input type="text" inputMode="numeric" value={wholesalePrice} onChange={handleInputChange(setWholesalePrice)}
-                    className="w-full text-3xl font-black bg-transparent border-none focus:ring-0 outline-none" />
+                  <input 
+                    type="text" 
+                    inputMode="numeric" 
+                    value={wholesalePrice} 
+                    onChange={handleInputChange(setWholesalePrice)}
+                    style={{ color: POINT_COLOR }}
+                    className="w-full text-3xl font-black bg-transparent border-none focus:ring-0 outline-none" 
+                  />
                   <span className="text-lg font-bold text-slate-400 whitespace-nowrap">원</span>
                 </div>
               </div>
@@ -227,74 +251,71 @@ const App = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* 기존 방식 */}
               <div className="rounded-[2.5rem] border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col transition-all hover:shadow-md">
                 <div className="p-6 bg-slate-200 text-slate-700 flex items-center justify-center">
                   <span className="font-black text-xl tracking-tight uppercase">기존저장방법(비설치)</span>
                 </div>
                 <div className="p-10 space-y-5 flex-grow">
-                  <div className="flex justify-between items-center text-base font-bold text-slate-600">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
                     <span>저장 총 금액</span>
                     <span className="text-slate-900">₩ {formatNum(calcResults.totalValue)}</span>
                   </div>
-                  <div className="flex justify-between items-center text-base font-bold text-slate-600">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
                     <span>예상 감모율</span>
                     <span className="text-slate-900 font-bold">{formatFloat(calcResults.convertedBaseLoss)}%</span>
                   </div>
-                  <div className="flex justify-between items-center text-base font-bold text-slate-600">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
                     <span>감모 및 폐기량</span>
                     <span className="text-slate-900">{formatFloat(calcResults.baseWasteWeight)} kg</span>
                   </div>
-                  <div className="flex justify-between items-center text-base font-bold text-slate-600">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
                     <span>손실 추정액</span>
                     <span className="text-red-500 font-black">- ₩ {formatNum(calcResults.baseWasteCost)}</span>
                   </div>
                   <div className="pt-6 border-t-2 border-slate-900">
-                    <span className="block text-sm font-black text-slate-500 uppercase mb-2 tracking-widest uppercase">실수령 금액 (저장금액-감모금액)</span>
-                    <div className="text-5xl font-black text-slate-800 tracking-tighter italic">₩ {formatNum(calcResults.baseActualValue)}</div>
+                    <span className="block text-sm font-black text-slate-500 uppercase mb-2 tracking-widest">실수령 금액 (저장금액-감모금액)</span>
+                    <div className="text-4xl font-black text-slate-800 tracking-tighter">₩ {formatNum(calcResults.baseActualValue)}</div>
                   </div>
                 </div>
               </div>
 
-              {/* 에어조나 방식 */}
               <div className="rounded-[2.5rem] border-2 border-blue-600 bg-white shadow-2xl shadow-blue-100 overflow-hidden flex flex-col transition-all hover:scale-[1.01]">
                 <div className="p-6 bg-blue-600 text-white flex items-center justify-center">
                   <span className="font-black text-xl tracking-tight uppercase">에어조나 사용시</span>
                 </div>
                 <div className="p-10 space-y-5 flex-grow">
-                  <div className="flex justify-between items-center text-base font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-400">
                     <span>저장 총 금액</span>
                     <span className="text-blue-900 font-bold">₩ {formatNum(calcResults.totalValue)}</span>
                   </div>
-                  <div className="flex justify-between items-center text-base font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-400">
                     <span>예상 감모율</span>
                     <span className="text-blue-600 font-black">{formatFloat(calcResults.convertedAirLoss)}%</span>
                   </div>
-                  <div className="flex justify-between items-center text-base font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-400">
                     <span>감모 및 폐기량</span>
                     <span className="text-blue-600 font-bold">{formatFloat(calcResults.airWasteWeight)} kg</span>
                   </div>
-                  <div className="flex justify-between items-center text-base font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-400">
                     <span>손실 추정액</span>
                     <span className="text-blue-600 font-black">- ₩ {formatNum(calcResults.airWasteCost)}</span>
                   </div>
                   <div className="pt-6 border-t-2 border-blue-600">
-                    <span className="block text-sm font-black text-blue-400 uppercase mb-2 tracking-widest text-right">실수령 금액 (저장금액-감모금액)</span>
-                    <div className="text-5xl font-black text-blue-600 tracking-tighter italic text-right">₩ {formatNum(calcResults.airActualValue)}</div>
+                    <span className="block text-sm font-black text-blue-300 uppercase mb-2 tracking-widest text-right">실수령 금액 (저장금액-감모금액)</span>
+                    <div className="text-4xl font-black text-blue-600 tracking-tighter text-right">₩ {formatNum(calcResults.airActualValue)}</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 개선 수익 하이라이트 */}
             <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-xl flex flex-col md:flex-row justify-between items-center gap-6 mt-4 relative overflow-hidden transition-all hover:bg-slate-800">
               <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-r from-blue-600/20 to-transparent pointer-events-none" />
               <div className="text-center md:text-left space-y-1 relative z-10">
-                <span className="text-blue-400 font-black text-[11px] tracking-widest uppercase italic">AIRZONA SAVINGS</span>
+                <span className="text-blue-400 font-black text-[11px] tracking-widest uppercase">AIRZONA SAVINGS</span>
                 <h3 className="text-2xl font-black tracking-tight leading-tight uppercase">에어조나 설치 후 기대 절감금액 ({storageDays}일 기준)</h3>
               </div>
               <div className="text-center md:text-right relative z-10 flex flex-col items-center md:items-end">
-                <div className="text-5xl md:text-6xl font-black tracking-tighter italic text-blue-400 drop-shadow-md">
+                <div className="text-4xl md:text-5xl font-black tracking-tighter text-blue-400 drop-shadow-md">
                   ₩ {formatNum(calcResults.wasteCostDiff)}
                 </div>
               </div>
@@ -311,19 +332,18 @@ const App = () => {
 
             <div className="bg-white rounded-[2.5rem] p-8 md:p-10 border border-slate-200 shadow-xl overflow-hidden transition-all">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {/* 시뮬레이션 설정 영역 */}
                 <div className="space-y-8 md:pr-10 md:border-r border-slate-100 pb-8 md:pb-0">
                   <div className="space-y-2">
                     <p className="text-xs font-black text-blue-600 uppercase tracking-widest">Simulation Input</p>
-                    <h3 className="text-2xl font-black text-slate-700 tracking-tighter">투자 효율 시뮬레이션</h3>
+                    <h3 className="text-lg font-bold text-slate-700">투자 효율 시뮬레이션</h3>
+                    <div className="w-full h-px bg-slate-200 my-4" />
                   </div>
                   
                   <div className="space-y-8">
-                    {/* ROI 입력 영역 */}
                     <div className="space-y-4 transition-all group">
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full" />
-                        <label className="text-lg font-black text-slate-600 tracking-tighter">에어조나 기기 및 설치 비용</label>
+                        <label className="text-sm font-black text-slate-500 uppercase tracking-widest">에어조나 기기 및 설치 비용</label>
                       </div>
                       <div className="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-2 border border-slate-200 group-focus-within:border-blue-600 group-focus-within:bg-white transition-all shadow-sm">
                          <span className="text-xl font-bold text-slate-400 group-focus-within:text-blue-600 transition-colors">₩</span>
@@ -332,7 +352,7 @@ const App = () => {
                             value={installCost} 
                             onChange={handleInstallCostChange}
                             placeholder="0"
-                            className="w-full bg-transparent text-3xl font-black outline-none tabular-nums" 
+                            className="w-full bg-transparent text-2xl font-black outline-none tabular-nums text-slate-800" 
                          />
                       </div>
                       <p className="text-[11px] text-slate-400 font-bold ml-4 -mt-2 mb-1">
@@ -343,7 +363,7 @@ const App = () => {
                     <div className="space-y-4 transition-all group">
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full" />
-                        <label className="text-lg font-black text-slate-600 tracking-tighter">연간 예상 저장 횟수</label>
+                        <label className="text-sm font-black text-slate-500 uppercase tracking-widest">연간 예상 저장 횟수</label>
                       </div>
                       <div className="flex items-center gap-4 bg-slate-50 rounded-xl px-4 py-2 border border-slate-200 group-focus-within:border-blue-600 group-focus-within:bg-white transition-all shadow-sm">
                          <input 
@@ -351,52 +371,53 @@ const App = () => {
                             inputMode="numeric" 
                             value={annualCycles} 
                             onChange={handleInputChange(setAnnualCycles)}
-                            className="w-full bg-transparent text-3xl font-black outline-none tabular-nums" 
+                            style={{ color: POINT_COLOR }}
+                            className="w-full bg-transparent text-2xl font-black outline-none tabular-nums" 
                          />
-                         <span className="text-xl font-bold text-slate-300 italic whitespace-nowrap group-focus-within:text-blue-600 transition-colors">회 / 년</span>
+                         <span className="text-xl font-bold text-slate-300 whitespace-nowrap group-focus-within:text-blue-600 transition-colors">회 / 년</span>
                       </div>
                       
-                      {/* 가이드 텍스트 박스 */}
                       <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 shadow-inner mt-4">
-                        <p className="text-xs text-blue-700 font-bold leading-relaxed flex items-center gap-2">
-                          <Info className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                          에어조나 기기 및 설치 비용과 연간 예상 저장 횟수를 직접 입력하시면, 도입효과를 실시간으로 분석하실 수 있습니다.
-                        </p>
+                        <div className="text-sm font-bold leading-relaxed flex items-start gap-2" style={{ color: POINT_COLOR }}>
+                          <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p>에어조나 기기 및 설치비용과 연간 예상 저장횟수를 직접 입력해보세요.</p>
+                            <p className="opacity-80">기대수익 결과가 실시간으로 계산됩니다.</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* 분석 결과 디스플레이 영역 */}
                 <div className="flex flex-col space-y-6 justify-center">
                   <div className="space-y-1">
-                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Analysis Results</p>
-                    <h3 className="text-2xl font-black text-slate-700 tracking-tighter">기대수익 분석 결과</h3>
+                    <p className="text-xs font-black text-blue-600 uppercase tracking-widest">Analysis Results</p>
+                    <h3 className="text-lg font-bold text-slate-700">기대수익 분석 결과</h3>
+                    <div className="w-full h-px bg-slate-100 my-4" />
                   </div>
 
-                  {/* 연간 기대 절감액 */}
                   <div className="bg-slate-50/50 rounded-3xl p-6 border border-slate-100 space-y-2 group transition-all hover:bg-white hover:shadow-md shadow-sm">
-                    <p className="text-base font-black text-slate-500 uppercase tracking-tighter">연간 총 기대 절감액</p>
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-tighter group-hover:text-blue-600 transition-colors">연간 총 기대 절감액</p>
                     <div className="flex items-baseline gap-2">
-                      <p className="text-5xl font-black italic tracking-tight text-slate-900 tabular-nums">
+                      <p className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 tabular-nums">
                         ₩ {formatNum(calcResults.expectedAnnualSaving)}
                       </p>
                     </div>
                   </div>
 
-                  {/* 투자비용 회수기간 */}
                   <div className="bg-blue-600 rounded-3xl p-8 shadow-lg relative overflow-hidden group transition-all hover:scale-[1.02]">
                     <div className="absolute top-0 right-0 p-4 opacity-10">
                       <TrendingUp className="w-24 h-24 text-white" />
                     </div>
                     <div className="relative z-10 space-y-2">
                       <p className="text-xs font-black text-blue-100 uppercase tracking-[0.2em]">Payback Period</p>
-                      <h4 className="text-xl font-black text-white mb-2 uppercase tracking-tighter">투자비용 회수기간</h4>
+                      <h4 className="text-lg font-bold text-white mb-2 uppercase tracking-tighter">투자비용 회수기간</h4>
                       <div className="flex items-baseline gap-3">
-                        <span className="text-8xl font-black text-white tracking-tighter leading-none tabular-nums drop-shadow-md">
+                        <span className="text-6xl md:text-7xl font-black text-white tracking-tighter leading-none tabular-nums drop-shadow-md">
                           {roiInfo.value}
                         </span>
-                        <span className="text-2xl font-black text-blue-200 italic">{roiInfo.unit} 이내</span>
+                        <span className="text-xl md:text-2xl font-black text-blue-200">{roiInfo.unit} 이내</span>
                       </div>
                     </div>
                   </div>
@@ -417,7 +438,6 @@ const App = () => {
         </div>
       </main>
 
-      {/* 푸터 영역 */}
       <footer className="bg-white pt-12 pb-12 border-t border-slate-200">
         <div className="max-w-5xl mx-auto px-6 text-[10px] text-slate-400 flex flex-col md:flex-row justify-between items-center gap-6 font-bold uppercase tracking-[0.3em]">
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-2">
