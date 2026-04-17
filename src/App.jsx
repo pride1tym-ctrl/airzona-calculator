@@ -41,6 +41,38 @@ const App = () => {
   const [installCost, setInstallCost] = useState("5,500,000");
   const [annualCycles, setAnnualCycles] = useState("4");
 
+  // 파비콘 및 타이틀 동적 설정
+  useEffect(() => {
+    // 1. 페이지 타이틀 설정
+    document.title = "에어조나(AIRZONA) 수익성 분석기";
+
+    // 2. 동적 파비콘 생성 (Canvas 활용)
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+
+    // 블랙 배경 그리기 (둥근 모서리)
+    ctx.fillStyle = '#0f172a'; // slate-900
+    ctx.beginPath();
+    ctx.roundRect(0, 0, 64, 64, 12);
+    ctx.fill();
+
+    // 흰색 'A' 텍스트 그리기
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 42px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('A', 32, 35);
+
+    // 파비콘 링크 태그 생성/수정
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = canvas.toDataURL();
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }, []);
+
   useEffect(() => {
     const item = ITEM_DATA.find(i => i.name === selectedItemName);
     if (item) setWholesalePrice(item.price.toString());
@@ -127,7 +159,7 @@ const App = () => {
               <div className="h-6 w-1 bg-blue-600 rounded-full" />
               <span className="text-blue-600 font-black text-xs tracking-widest uppercase">AIRZONA ECONOMIC ANALYSIS</span>
             </div>
-            {/* 요청에 따라 타이틀 앞의 아이콘 삭제하여 정갈하게 수정 */}
+            {/* 본문 타이틀은 요청대로 아이콘 없이 정갈하게 유지 */}
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
               에어조나(AIRZONA) 수익 계산기
             </h1>
@@ -258,19 +290,19 @@ const App = () => {
                   <span className="font-black text-xl tracking-tight uppercase">기존저장방법(비설치)</span>
                 </div>
                 <div className="p-10 space-y-5 flex-grow">
-                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-600">
                     <span>저장 총 금액</span>
                     <span className="text-slate-900">₩ {formatNum(calcResults.totalValue)}</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-600">
                     <span>예상 감모율</span>
                     <span className="text-slate-900 font-bold">{formatFloat(calcResults.convertedBaseLoss)}%</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-600">
                     <span>감모 및 폐기량</span>
                     <span className="text-slate-900">{formatFloat(calcResults.baseWasteWeight)} kg</span>
                   </div>
-                  <div className="flex justify-between items-center text-sm font-bold text-slate-500">
+                  <div className="flex justify-between items-center text-sm font-bold text-slate-600">
                     <span>손실 추정액</span>
                     <span className="text-red-400 font-black">- ₩ {formatNum(calcResults.baseWasteCost)}</span>
                   </div>
