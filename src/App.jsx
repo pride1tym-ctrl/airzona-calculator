@@ -378,7 +378,7 @@ const App = () => {
                       </div>
                       
                       <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 shadow-inner mt-4">
-                        <div className="text-sm font-bold leading-relaxed flex items-start gap-2" style={{ color: POINT_COLOR }}>
+                        <div className="text-xs font-bold leading-relaxed flex items-start gap-2" style={{ color: POINT_COLOR }}>
                           <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
                           <div>
                             <p>에어조나 기기 및 설치비용과 연간 예상 저장횟수를 직접 입력해보세요.</p>
