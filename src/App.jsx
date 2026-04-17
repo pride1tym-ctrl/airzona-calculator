@@ -161,7 +161,7 @@ const App = () => {
             </div>
             {/* 본문 타이틀은 요청대로 아이콘 없이 정갈하게 유지 */}
             <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
-              에어조나(AIRZONA) 수익 계산기
+              에어조나(AIRZONA) 수익성 분석기
             </h1>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold text-slate-500">
               <div className="flex items-center gap-1.5">
