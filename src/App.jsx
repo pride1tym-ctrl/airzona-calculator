@@ -390,7 +390,7 @@ const App = () => {
                          />
                       </div>
                       <p className="text-[11px] text-slate-400 font-bold ml-4 -mt-2 mb-1">
-                        (설치 여건에 따라 설치 비용은 증가할 수 있습니다)
+                        (Vat별도/설치 여건에 따라 설치 비용은 증가할 수 있습니다)
                       </p>
                     </div>
 
