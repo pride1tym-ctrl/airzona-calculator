@@ -38,7 +38,7 @@ const App = () => {
   const [storageDays, setStorageDays] = useState("30");
   const [storageWeight, setStorageWeight] = useState("10000");
   const [wholesalePrice, setWholesalePrice] = useState(ITEM_DATA[0].price.toString());
-  const [installCost, setInstallCost] = useState("5,500,000");
+  const [installCost, setInstallCost] = useState("6,000,000");
   const [annualCycles, setAnnualCycles] = useState("4");
 
   // 파비콘 및 타이틀 동적 설정
